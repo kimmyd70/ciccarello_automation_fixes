@@ -2,11 +2,11 @@ from rich.console import Console
 from rich.prompt import Prompt
 import sys
 import os
-from automation.create_folder import create_folder
-from automation.temp_folder import move_user_documents
-from automation.sort_folder import sort_documents
-from automation.parse_file import parse_log_file
-from automation.rename_pattern import name_pattern
+from automation.create_folder import make_folder
+# from automation.temp_folder import move_user_documents
+# from automation.sort_folder import sort_documents
+# from automation.parse_file import parse_log_file
+# from automation.rename_pattern import name_pattern
 
 def main():
   console = Console()
@@ -17,38 +17,38 @@ def main():
     
     if choice == '1':
       folder_name = Prompt.ask("Enter folder name")
-      create_folder(folder_name)
+      make_folder(folder_name)
       
-    elif choice == '2':
-      folder = Prompt.ask("Enter folder name")
-      file = Prompt.ask("Enter file name")
-      if os.path.exists(f'{folder}/{file}'):
-        move_user_documents(folder, file)
-        console.print(f"File '{file}' moved to temp folder!", style="bold green")
-      else:
-        console.print(f"Either folder or file does not exist!", style="bold red")
+    # elif choice == '2':
+    #   folder = Prompt.ask("Enter folder name")
+    #   file = Prompt.ask("Enter file name")
+    #   if os.path.exists(f'{folder}/{file}'):
+    #     move_user_documents(folder, file)
+    #     console.print(f"File '{file}' moved to temp folder!", style="bold green")
+    #   else:
+    #     console.print(f"Either folder or file does not exist!", style="bold red")
         
-    elif choice == '3':
-      folder_path = Prompt.ask("Enter folder path")
-      if os.path.exists(folder_path):
-        sort_documents(folder_path)
-      else:
-        print(f"Folder {folder_path} does not exist!")
+    # elif choice == '3':
+    #   folder_path = Prompt.ask("Enter folder path")
+    #   if os.path.exists(folder_path):
+    #     sort_documents(folder_path)
+    #   else:
+    #     print(f"Folder {folder_path} does not exist!")
         
-    elif choice == '4':
-      log_file_path = Prompt.ask("Enter log file path")
-      if os.path.exists(log_file_path):
-        parse_log_file(log_file_path, "logs")
-      else:
-        console.print(f"Log file does not exist!", style="bold red")
+    # elif choice == '4':
+    #   log_file_path = Prompt.ask("Enter log file path")
+    #   if os.path.exists(log_file_path):
+    #     parse_log_file(log_file_path, "logs")
+    #   else:
+    #     console.print(f"Log file does not exist!", style="bold red")
         
-    elif choice == '5':
-      file_extension = Prompt.ask("Enter file extension")
-      folder_path = Prompt.ask("Enter folder path")
-      if os.path.exists(folder_path):
-        console.print(f"Number of {file_extension} files in {folder_path} is {name_pattern(file_extension, folder_path)}", style="bold green")
-      else:
-        console.print(f"Folder {folder_path} does not exist!", style="bold red")
+    # elif choice == '5':
+    #   file_extension = Prompt.ask("Enter file extension")
+    #   folder_path = Prompt.ask("Enter folder path")
+    #   if os.path.exists(folder_path):
+    #     console.print(f"Number of {file_extension} files in {folder_path} is {name_pattern(file_extension, folder_path)}", style="bold green")
+    #   else:
+    #     console.print(f"Folder {folder_path} does not exist!", style="bold red")
         
     elif choice == 'q' or 'Q':
       do_exit('Exiting...')

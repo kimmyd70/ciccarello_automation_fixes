@@ -5,20 +5,20 @@ import os
 console = Console()
 prompt = Prompt()
 
-def make_folder():
+def make_folder(folder_name):
   """Main function to run the CLI app."""
-if os.path.exists('new_file'):
-  print(f'The directory already exists')
-else:
-  os.mkdir('new_file')
-  print(f'[bold blue]Directory Created[/bold blue]')
+  if os.path.exists(folder_name):
+    console.print(f'The directory already exists')
+  else:
+    os.mkdir(folder_name)
+    console.print(f'[bold blue]Directory Created[/bold blue]')
 
 
     
 
 
 if __name__ == '__main__':
-  name = Prompt.ask('Would you like to create a new folder?', default='no')
+  folder_name = Prompt.ask('Enter folder name')
 
 
 
