@@ -23,6 +23,6 @@ def move_file():
 
 
 if __name__ == '__main__':
-  name = Prompt.ask('Would you like to make a temporary folder?', default='no')
-  if name == 'y' or 'Y': 
-    make_temp_folder()
+  name = Prompt.ask('Would you like to make a temporary folder?', default='no').lower()
+  # if name == 'y' or 'Y' or 'yes' or 'YES': 
+  make_temp_folder()

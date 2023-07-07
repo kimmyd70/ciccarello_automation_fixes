@@ -1,19 +1,16 @@
 from rich.console import Console
 from rich.prompt import Prompt
-import sys
 import os
 
 console = Console()
 prompt = Prompt()
 
-console.print("Would you like to create a folder?")
-
 def make_folder():
   """Main function to run the CLI app."""
-if os.path.exists('test_dir'):
+if os.path.exists('new_file'):
   print(f'The directory already exists')
 else:
-  os.mkdir('test_dir')
+  os.mkdir('new_file')
   print(f'[bold blue]Directory Created[/bold blue]')
 
 
@@ -21,7 +18,7 @@ else:
 
 
 if __name__ == '__main__':
-  name = Prompt.ask('What is your filename?', default='no')
+  name = Prompt.ask('Would you like to create a new folder?', default='no')
 
 
 
